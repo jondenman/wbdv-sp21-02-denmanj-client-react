@@ -94,7 +94,7 @@ class CourseManager extends React.Component {
 
     render() {
         return(
-            <div className="container">
+            <div className="container-fluid">
                 {/*<h1>Course manager</h1>*/}
                 <div className="row" style={{paddingTop: "1em"}}>
                     <div className="col-1">
@@ -119,7 +119,8 @@ class CourseManager extends React.Component {
                 </Route>
                 <Route path="/courses/grid">
                     <CourseGrid courses={this.state.courses}
-                                deleteCourse={this.deleteCourse}/>
+                                deleteCourse={this.deleteCourse}
+                                updateCourse={this.updateCourse}/>
                 </Route>
                 <Route path="/courses/editor"
                        render={(props) => <CourseEditor {...props}/>}>

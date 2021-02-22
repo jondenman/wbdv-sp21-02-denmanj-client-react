@@ -38,6 +38,7 @@ export default class CourseTable extends React.Component {
                                     title={course.title}
                                     owner={course.owner}
                                     lastModified={course.lastModified}
+                                    updatedAt={course._updatedAt}
                                 />
                             )
                         }

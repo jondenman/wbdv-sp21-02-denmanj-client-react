@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import {Link} from "react-router-dom";
 
-const CourseRow = ({title, owner, lastModified, deleteCourse, course, updateCourse}) => {
+const CourseRow = ({title, owner, lastModified, deleteCourse, course, updateCourse, updatedAt}) => {
     const [editing, setEditing] = useState(false)
     const [newTitle, setNewTitle] = useState(title)
 
@@ -32,7 +32,7 @@ const CourseRow = ({title, owner, lastModified, deleteCourse, course, updateCour
         </td>
 
         <td className="d-none d-md-table-cell">{owner}</td>
-        <td className="d-none d-lg-table-cell">{lastModified}</td>
+        <td className="d-none d-lg-table-cell">{updatedAt}</td>
         <td>
             <i onClick={() => deleteCourse(course)} className="fas fa-trash"></i>
             {editing && <i onClick={() => saveTitle()} className="fas fa-check"></i>}

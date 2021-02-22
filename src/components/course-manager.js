@@ -8,17 +8,21 @@ import courseService from "../services/course-service";
 class CourseManager extends React.Component {
 
     state = {
-        courses: []
+        courses: [],
     }
 
     componentDidMount = () =>
         courseService.findAllCourses().then(courses => this.setState({courses}))
 
+
     addCourse = () => {
 
+        let courseTitle = document.getElementById('newTitle').value
+        console.log(courseTitle)
+
         const newCourse = {
-            title: "New Course",
-            owner: "New Owner",
+            title: courseTitle,
+            owner: "Me",
             lastModified: "nev"
         }
 
@@ -47,6 +51,14 @@ class CourseManager extends React.Component {
                 })
             })
     }
+
+    // deleteAllCourses = () => {
+    //     var i
+    //     for (i = 0; i < this.state.courses.length; i++ ) {
+    //         this.deleteCourse(this.state.courses[i])
+    //     }
+    // }
+
 
     // updateCourse = (course) => {
     //     courseService.updateCourse(course._id, course)
@@ -82,9 +94,24 @@ class CourseManager extends React.Component {
 
     render() {
         return(
-            <div>
-                <h1>Course manager</h1>
-                <button onClick={this.addCourse}>Add Course</button>
+            <div className="container">
+                {/*<h1>Course manager</h1>*/}
+                <div className="row" style={{paddingTop: "1em"}}>
+                    <div className="col-1">
+                        <i className="fas fa-2x fa-bars"></i>
+                    </div>
+                    <div className="col-10">
+                        <input className="form-control"
+                               id="newTitle">
+                        </input>
+                    </div>
+                    <div className="col-1 float-right">
+                        <i className="fas fa-2x fa-plus-circle float-right"
+                           onClick={this.addCourse}></i>
+                        {/*<button onClick={this.deleteAllCourses}>clear courses</button>*/}
+                    </div>
+                </div>
+
                 <Route path="/courses/table">
                     <CourseTable courses={this.state.courses}
                                  updateCourse={this.updateCourse}

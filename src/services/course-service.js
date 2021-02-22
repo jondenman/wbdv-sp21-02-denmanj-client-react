@@ -9,11 +9,22 @@ export const createCourse = (course) =>
         }
     })
         .then(response => response.json())
+
 export const findAllCourses = () =>
     fetch(COURSES_URL).then(response => response.json())
 
 export const findCourseById = (id) => {}
-export const updateCourse = (courseId, course) => {}
+
+export const updateCourse = (courseId, course) =>
+    fetch(`${COURSES_URL}/${courseId}`, {
+        method: 'PUT',
+        body: JSON.stringify(course),
+        headers: {
+            'content-type': 'application/json'
+        }
+    })
+        .then(response => response.json())
+
 export const deleteCourse = (courseId) =>
     fetch(`${COURSES_URL}/${courseId}`,
         {method: 'DELETE'})

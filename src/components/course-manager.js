@@ -16,8 +16,6 @@ class CourseManager extends React.Component {
 
     addCourse = () => {
 
-
-
         const newCourse = {
             title: "New Course",
             owner: "New Owner",
@@ -27,15 +25,15 @@ class CourseManager extends React.Component {
         courseService.createCourse(newCourse)
             .then(course => this.setState(
                 (prevState) => ({
-                ...prevState,
-                course: [
-                    ...prevState.courses,
-                    course
-                ]
-            })))
+                    ...prevState,
+                    courses: [
+                        ...prevState.courses,
+                        course
+                    ]
+                })))
 
-        this.state.courses.push(newCourse)
-        this.setState(this.state)
+        // this.state.courses.push(newCourse)
+        // this.setState(this.state)
     }
 
     deleteCourse = (courseToDelete) => {
@@ -50,6 +48,38 @@ class CourseManager extends React.Component {
             })
     }
 
+    // updateCourse = (course) => {
+    //     courseService.updateCourse(course._id, course)
+    //         .then(status => this.setState((prevState) => ({
+    //             ...prevState,
+    //             courses: prevState.courses.map(c => {
+    //                 if(c._id === course._id) {
+    //                     return course
+    //                 } else {
+    //                     return c
+    //                 }
+    //             })
+    //         })))
+    // }
+
+    updateCourse = (course) => {
+        console.log(course)
+        courseService.updateCourse(course._id, course)
+            .then(status => this.setState((prevState) => ({
+                ...prevState,
+                courses: prevState.courses.map(
+                    (c) => c._id === course._id ? course : c)
+
+                // courses: prevState.courses.map(c => {
+                //   if(c._id === course._id) {
+                //     return course
+                //   } else {
+                //     return c
+                //   }
+                // })
+            })))
+    }
+
     render() {
         return(
             <div>
@@ -57,6 +87,7 @@ class CourseManager extends React.Component {
                 <button onClick={this.addCourse}>Add Course</button>
                 <Route path="/courses/table">
                     <CourseTable courses={this.state.courses}
+                                 updateCourse={this.updateCourse}
                                  deleteCourse={this.deleteCourse}/>
                 </Route>
                 <Route path="/courses/grid">

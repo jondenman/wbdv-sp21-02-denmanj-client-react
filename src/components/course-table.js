@@ -19,12 +19,11 @@ export default class CourseTable extends React.Component {
                     <thead>
                         <tr>
                             <th>Title</th>
-                            <th>Owned by</th>
-                            <th>Last modified</th>
+                            <th className="d-none d-md-table-cell">Owned by</th>
+                            <th className="d-none d-lg-table-cell">Last modified</th>
                             <th>
-                                <i className="fas fa-folder"></i>
+                                <i className="fas fa-folder" style={{marginRight:  '1em'}}></i>
                                 <i className="fas fa-sort-alpha-up-alt"></i>
-                                <i className="fas fa-windows"></i>
                             </th>
                         </tr>
                     </thead>
@@ -32,6 +31,7 @@ export default class CourseTable extends React.Component {
                         {
                             this.props.courses.map((course, ndx) =>
                                 <CourseRow
+                                    updateCourse={this.props.updateCourse}
                                     deleteCourse={this.props.deleteCourse}
                                     key={ndx}
                                     course={course}

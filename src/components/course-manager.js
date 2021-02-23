@@ -98,7 +98,6 @@ class CourseManager extends React.Component {
     render() {
         return(
             <div className="container-fluid">
-                {/*<h1>Course manager</h1>*/}
                 <div className="row" style={{paddingTop: "1em"}}>
                     <div className="col-1">
                         <i className="fas fa-2x fa-bars"></i>

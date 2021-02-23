@@ -5,7 +5,9 @@ import CourseEditor from "./course-editor";
 import {Route} from 'react-router-dom'
 import courseService from "../services/course-service";
 
+
 class CourseManager extends React.Component {
+
 
     state = {
         courses: [],
@@ -36,6 +38,7 @@ class CourseManager extends React.Component {
                     ]
                 })))
 
+        document.getElementById('newTitle').value = ""
         // this.state.courses.push(newCourse)
         // this.setState(this.state)
     }
@@ -126,6 +129,11 @@ class CourseManager extends React.Component {
                        render={(props) => <CourseEditor {...props}/>}>
 
                 </Route>
+                <div>
+                    <i className="fas fa-3x fa-plus-circle"
+                       style={{position: "fixed", bottom: "5px", right: "5px"}}
+                        onClick={this.addCourse}></i>
+                </div>
             </div>
         )
     }

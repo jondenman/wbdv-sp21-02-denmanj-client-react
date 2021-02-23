@@ -50,9 +50,14 @@ const CourseCard = ({course, deleteCourse, title, updateCourse}) => {
                 <Link to="/courses/editor" className="btn btn-primary">
                     {course.title}
                 </Link>
-                <i onClick={() => deleteCourse(course)} className="fas fa-trash float-right"></i>
-                {editing && <i onClick={() => saveTitle()} className="fas fa-check float-right" style={{marginRight: "1em"}}></i>}
-                {!editing && <i onClick={() => setEditing(true)} className="fas fa-edit float-right"></i>}
+                <i onClick={() => deleteCourse(course)}
+                   className="fas fa-trash float-right"></i>
+                {editing && <i onClick={() => saveTitle()}
+                               className="fas fa-check float-right"
+                               style={{marginRight: "1em"}}></i>}
+                {!editing && <i onClick={() => setEditing(true)}
+                                className="fas fa-edit float-right"
+                                style={{marginRight:  '1em'}}></i>}
             </div>
         </div>
     </div>

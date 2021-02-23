@@ -15,6 +15,7 @@ const CourseGrid = ({courses, deleteCourse, updateCourse}) =>
                                 deleteCourse={deleteCourse}
                                 key={ndx}
                                 updateCourse={updateCourse}
+                                title={course.title}
                     />
                 )
             }

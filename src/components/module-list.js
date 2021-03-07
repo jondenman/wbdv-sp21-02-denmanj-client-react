@@ -4,8 +4,15 @@ import EditableItem from "./editable-item";
 import {useParams} from "react-router-dom";
 import moduleService from "../services/module-service";
 
-const ModuleList = ({myModules=[], createModule, deleteModule, updateModule, findModulesForCourse}) => {
-    const {courseId} = useParams();
+const ModuleList = (
+    {
+        myModules=[],
+        createModule,
+        deleteModule,
+        updateModule,
+        findModulesForCourse
+    }) => {
+    const {courseId, moduleId} = useParams();
     useEffect(() => {
         findModulesForCourse(courseId)
     }, [])

@@ -1,9 +1,5 @@
 const initialState = {
-    modules: [
-        {_id: 123, title: "Module 123"},
-        {_id: 234, title: "Module 234"},
-        {_id: 456, title: "Module 456"},
-    ]
+    modules: []
 }
 
 const moduleReducer = (state = initialState, action) => {
@@ -12,10 +8,7 @@ const moduleReducer = (state = initialState, action) => {
             const newState = {
                 modules: [
                     ...state.modules,
-                    {
-                        title: "new module",
-                        _id: (new Date()).getTime()
-                    }
+                    action.module
                 ]
             }
             return newState
@@ -39,6 +32,11 @@ const moduleReducer = (state = initialState, action) => {
                         return m
                     }
                 })
+            }
+        case "FIND_MODULES_FOR_COURSE":
+            return {
+                ...state,
+                modules: action.modules
             }
         default:
             return state

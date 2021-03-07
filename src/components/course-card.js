@@ -33,7 +33,7 @@ const CourseCard = ({course, deleteCourse, title, updateCourse}) => {
                 <h5 className="card-title">
                     {
                         !editing &&
-                        <Link to="/courses/editor">
+                        <Link to={`/courses/editor/${course._id}`}>
                             {course.title}
                         </Link>
                     }
@@ -47,7 +47,7 @@ const CourseCard = ({course, deleteCourse, title, updateCourse}) => {
                 </h5>
                 <p className="card-text">Some quick example text to build on the card title and make up the bulk of
                     the card's content.</p>
-                <Link to="/courses/editor" className="btn btn-primary">
+                <Link to={`/courses/editor/${course._id}`} className="btn btn-primary">
                     {course.title}
                 </Link>
                 <i onClick={() => deleteCourse(course)}

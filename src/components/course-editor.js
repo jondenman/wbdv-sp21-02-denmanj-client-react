@@ -7,6 +7,7 @@ import {Provider} from "react-redux";
 import ModuleList from "./module-list";
 import LessonTabs from "./lesson-tabs";
 import TopicPills from "./topic-pills";
+import {useParams} from "react-router";
 
 
 const reducer = combineReducers({
@@ -18,20 +19,24 @@ const reducer = combineReducers({
 // const store = createStore(moduleReducer)
 const store = createStore(reducer)
 
-const CourseEditor = ({history}) =>
-    <Provider store={store}>
-        <div>
-            <div className="row">
-                <div className="col-4">
-                    <ModuleList/>
-                </div>
-                <div className="col-4">
-                    <LessonTabs/>
-                    <TopicPills/>
+const CourseEditor = ({history}) => {
+    const {courseId, moduleId} = useParams();
+    return (
+        <Provider store={store}>
+            <div>
+                <h1>{courseId} {moduleId}</h1>
+                <div className="row">
+                    <div className="col-4">
+                        <ModuleList/>
+                    </div>
+                    <div className="col-4">
+                        <LessonTabs/>
+                        <TopicPills/>
+                    </div>
                 </div>
             </div>
-        </div>
-    </Provider>
-
+        </Provider>
+    )
+}
 
 export default CourseEditor

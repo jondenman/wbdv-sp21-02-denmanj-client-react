@@ -1,8 +1,11 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import EditableItem from "./editable-item";
+import {useParams} from "react-router-dom";
 
-const TopicPills = ({topics=[], createTopic, deleteTopic, updateTopic}) =>
+const TopicPills = ({topics=[], createTopic, deleteTopic, updateTopic}) => {
+    const {courseId, moduleId, lessonId} = useParams();
+    return (
     <div>
         <h2>topics</h2>
         <ul className="nav nav-pills">
@@ -11,6 +14,7 @@ const TopicPills = ({topics=[], createTopic, deleteTopic, updateTopic}) =>
                     <li className="nav-item">
                         <a className="nav-link" href="#">
                             <EditableItem item={topic}
+                                          to={`/courses/editor/${courseId}/${moduleId}/${lessonId}/${topic._id}`}
                                           deleteItem={deleteTopic}
                                           updateItem={updateTopic}
                             />
@@ -22,7 +26,8 @@ const TopicPills = ({topics=[], createTopic, deleteTopic, updateTopic}) =>
                 <i onClick={createTopic} className="fas fa-plus-circle"></i>
             </li>
         </ul>
-    </div>
+    </div>)
+}
 
 const stpm = (state) => {
     return {

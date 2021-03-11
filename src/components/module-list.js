@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react'
 import {connect} from "react-redux";
 import EditableItem from "./editable-item";
-import {useParams} from "react-router-dom";
+import {Link, useParams} from "react-router-dom";
 import moduleService from "../services/module-service";
 
 const ModuleList = (
@@ -12,28 +12,32 @@ const ModuleList = (
         updateModule,
         findModulesForCourse
     }) => {
-    const {courseId, moduleId} = useParams();
+    const {courseId, moduleId, layout} = useParams();
     useEffect(() => {
         findModulesForCourse(courseId)
     }, [])
     return (
     <div>
-        <h2>Modules {myModules.length} {courseId}</h2>
+        <h2>Modules</h2>
         <ul className="list-group">
             {
                 myModules.map(module =>
-                    <li className="list-group-item">
+                    <Link className={`nav-link d-inline`} to={`/courses/${layout}/edit/${courseId}/${module._id}`}>
+                    <li className={`list-group-item ${module._id === moduleId ? 'active' : ''}`}>
                         <EditableItem item={module}
-                                      to={`/courses/editor/${courseId}/${module._id}`}
+                                      to={`/courses/${layout}/edit/${courseId}/${module._id}`}
                                       deleteItem={deleteModule}
                                       updateItem={updateModule}
                         />
                     </li>
+                    </Link>
                 )
             }
-            <li className="list-group-item">
-                <i onClick={() => createModule(courseId)} className="fas fa-plus-circle fa-2x"></i>
-            </li>
+            <div className="container-fluid">
+            <button className="btn btn-primary" type="button" onClick={() => createModule(courseId)}>
+                <i className="fas fa-plus-circle  fa-2x"></i>
+            </button>
+            </div>
         </ul>
     </div>)
 }

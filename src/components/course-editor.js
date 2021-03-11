@@ -8,6 +8,7 @@ import ModuleList from "./module-list";
 import LessonTabs from "./lesson-tabs";
 import TopicPills from "./topic-pills";
 import {useParams} from "react-router";
+import {Link} from "react-router-dom";
 
 
 const reducer = combineReducers({
@@ -20,11 +21,19 @@ const reducer = combineReducers({
 const store = createStore(reducer)
 
 const CourseEditor = ({history}) => {
-    const {courseId, moduleId} = useParams();
+    const {courseId, moduleId, layout} = useParams();
     return (
         <Provider store={store}>
             <div>
-                <h1>{courseId} {moduleId}</h1>
+
+                <h1>
+                    <Link to={`/courses/${layout}`}>
+                        <i className="fas fa-times"></i>
+                    </Link>
+                    <>
+                        {courseId}
+                    </>
+                </h1>
                 <div className="row">
                     <div className="col-4">
                         <ModuleList/>

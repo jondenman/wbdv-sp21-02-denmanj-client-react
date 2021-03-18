@@ -1,5 +1,6 @@
-const WIDGETS_URL="http://localhost:8080/api/widgets";
-const TOPICS_URL = "http://localhost:8080/api/topics";
+const localhost = "localhost:8080"
+const WIDGETS_URL=`http://${localhost}/api/widgets`;
+const TOPICS_URL = `http://${localhost}/api/topics`;
 
 export const findAllWidgets = () =>
     fetch(`${WIDGETS_URL}`).then(response => response.json())

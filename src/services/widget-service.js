@@ -1,6 +1,8 @@
-const localhost = "localhost:8080"
-const WIDGETS_URL=`http://${localhost}/api/widgets`;
-const TOPICS_URL = `http://${localhost}/api/topics`;
+// const localhost = "localhost:8080"
+// const WIDGETS_URL=`http://${localhost}/api/widgets`;
+// const TOPICS_URL = `http://${localhost}/api/topics`;
+const WIDGETS_URL=`https://wbdv-sp21-denmanj-server-java.herokuapp.com/api/widgets`;
+const TOPICS_URL = `https://wbdv-sp21-denmanj-server-java.herokuapp.com/api/topics`;
 
 export const findAllWidgets = () =>
     fetch(`${WIDGETS_URL}`).then(response => response.json())

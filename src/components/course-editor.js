@@ -9,12 +9,15 @@ import LessonTabs from "./lesson-tabs";
 import TopicPills from "./topic-pills";
 import {useParams} from "react-router";
 import {Link} from "react-router-dom";
+import WidgetList from "./course-editor/widgets/widget-list";
+import widgetReducer from "../reducers/widget-reducer";
 
 
 const reducer = combineReducers({
     moduleReducer: moduleReducer,
     lessonReducer: lessonReducer,
-    topicReducer: topicReducer
+    topicReducer: topicReducer,
+    widgetReducer: widgetReducer
 })
 
 // const store = createStore(moduleReducer)
@@ -35,12 +38,14 @@ const CourseEditor = ({history}) => {
                     </>
                 </h1>
                 <div className="row">
-                    <div className="col-4">
+                    <div className="col-3">
                         <ModuleList/>
                     </div>
-                    <div className="col-4">
+                    <div className="col-9">
                         <LessonTabs/>
                         <TopicPills/>
+                        <br/>
+                        <WidgetList/>
                     </div>
                 </div>
             </div>

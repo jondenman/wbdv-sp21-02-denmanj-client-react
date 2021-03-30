@@ -4,6 +4,8 @@ import widgetService, {findWidgetsForTopic} from "../../../services/widget-servi
 import HeadingWidget from "./heading-widget";
 import ParagraphWidget from "./paragraph-widget";
 import {useParams} from "react-router-dom";
+import ListWidget from "./list-widget";
+import ImageWidget from "./image-widget";
 
 const WidgetList = (
     {
@@ -41,6 +43,8 @@ const WidgetList = (
                                     >
                                         <option value={"HEADING"}>Heading</option>
                                         <option value={"PARAGRAPH"}>Paragraph</option>
+                                        <option value={"LIST"}>List</option>
+                                        <option value={"IMAGE"}>Image</option>
                                     </select>
                                     <i onClick={() => deleteWidget(widget)} className="fas fa-times fa-2x float-right"></i>
                                 </>
@@ -63,6 +67,22 @@ const WidgetList = (
                             {
                                 widget.type === "PARAGRAPH" &&
                                 <ParagraphWidget
+                                    editing={editingWidget.id === widget.id}
+                                    widget={widget}
+                                    updateWidget={updateWidget}
+                                    setEditing={setEditingWidget}/>
+                            }
+                            {
+                                widget.type === "LIST" &&
+                                <ListWidget
+                                    editing={editingWidget.id === widget.id}
+                                    widget={widget}
+                                    updateWidget={updateWidget}
+                                    setEditing={setEditingWidget}/>
+                            }
+{
+                                widget.type === "IMAGE" &&
+                                <ImageWidget
                                     editing={editingWidget.id === widget.id}
                                     widget={widget}
                                     updateWidget={updateWidget}
@@ -106,7 +126,7 @@ const dtpm = (dispatch) => {
         },
 
         updateWidget: (widget, topicId) => {
-            //alert("updating widget: " + widget.size)
+            // alert("updating widget: " + widget.ordered)
             widgetService.updateWidget(widget.id, widget)
                 .then(status => dispatch({
                     type: "UPDATE_WIDGET",

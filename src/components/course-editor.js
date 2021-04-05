@@ -11,6 +11,7 @@ import {useParams} from "react-router";
 import {Link} from "react-router-dom";
 import WidgetList from "./course-editor/widgets/widget-list";
 import widgetReducer from "../reducers/widget-reducer";
+import quizReducer from "../reducers/quiz-reducer";
 
 
 const reducer = combineReducers({

@@ -34,6 +34,11 @@ const CourseRow = ({title, owner, lastModified, deleteCourse, course, updateCour
         <td className="d-none d-md-table-cell">{owner}</td>
         <td className="d-none d-lg-table-cell">{updatedAt}</td>
         <td>
+            <Link to={`/courses/${course._id}/quizzes`}>
+                Quizzes
+            </Link>
+        </td>
+        <td>
             <i onClick={() => deleteCourse(course)}
                className="fas fa-trash"
                style={{marginRight:  '1em'}}></i>

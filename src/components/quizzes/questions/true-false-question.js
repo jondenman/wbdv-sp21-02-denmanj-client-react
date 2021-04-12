@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 
 const TrueFalseQuestion = ({question}) => {
-    const [yourAnswer, setYourAnswer] = useState({})
+    const [yourAnswer, setYourAnswer] = useState([])
     const [graded, setGraded] = useState(false)
     return(
         <div>
@@ -47,12 +47,18 @@ const TrueFalseQuestion = ({question}) => {
                         <li className={`list-group-item 
                         ${question.correct === "true" ? 'list-group-item-success' : 'list-group-item-danger'}`}>
                             <label><input type="radio"
+                                          onClick={() => {
+                                              setYourAnswer("true");
+                                          }}
                                           checked={yourAnswer === "true"}
                                           name={question._id}/> True </label>
                         </li>
                         <li className={`list-group-item 
                         ${question.correct === "false" ? 'list-group-item-success' : 'list-group-item-danger'}`}>
                             <label><input type="radio"
+                                          onClick={() => {
+                                              setYourAnswer("false");
+                                          }}
                                           checked={yourAnswer === "false"}
                                           name={question._id}/> False </label>
                         </li>
@@ -64,6 +70,11 @@ const TrueFalseQuestion = ({question}) => {
                             setGraded(true)
                         }}>Grade</button>
             </ul>
+
+            <p>
+                Your answer: {yourAnswer}
+            </p>
+
 
         </div>
 

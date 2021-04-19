@@ -30,6 +30,7 @@ const MultipleChoiceQuestion = ({question}) => {
                         ${question.correct === choice ? 'list-group-item-success' : 'list-group-item-danger'}`}>
                             <label><input checked={yourAnswer === choice}
                                 onClick={() => {
+                                    question.answer = choice;
                                 setYourAnswer(choice);
                             }}
                                           type="radio"
@@ -45,6 +46,7 @@ const MultipleChoiceQuestion = ({question}) => {
                             <li className={`list-group-item `}>
                                 <label><input
                                     onClick={() => {
+                                        question.answer = choice;
                                         setYourAnswer(choice);
                                     }}
                                     type="radio"
@@ -54,10 +56,10 @@ const MultipleChoiceQuestion = ({question}) => {
                     })
                 }
                 <br/>
-                <button className="btn btn-success"
-                        onClick={() => {
-                            setGraded(true)
-                        }}>Grade</button>
+                {/*<button className="btn btn-success"*/}
+                {/*        onClick={() => {*/}
+                {/*            setGraded(true)*/}
+                {/*        }}>Grade</button>*/}
             </ul>
 
             <p>

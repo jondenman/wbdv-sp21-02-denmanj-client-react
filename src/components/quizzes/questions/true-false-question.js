@@ -3,6 +3,7 @@ import React, {useState} from 'react'
 const TrueFalseQuestion = ({question}) => {
     const [yourAnswer, setYourAnswer] = useState([])
     const [graded, setGraded] = useState(false)
+    const [cachedItem, setCachedItem] = useState(question)
     return(
         <div>
             <h5>{question.question}
@@ -27,6 +28,7 @@ const TrueFalseQuestion = ({question}) => {
                         <li className="list-group-item">
                             <label><input type="radio"
                                           onClick={() => {
+                                              question.answer = "true";
                                               setYourAnswer("true");
                                           }}
                                           name={question._id}/> True </label>
@@ -34,6 +36,8 @@ const TrueFalseQuestion = ({question}) => {
                         <li className="list-group-item">
                         <label><input type="radio"
                                       onClick={() => {
+                                          question.answer = "false"
+                                          // {question.answer} = "false"
                                           setYourAnswer("false");
                                       }}
                                       name={question._id}/> False </label>
@@ -65,14 +69,14 @@ const TrueFalseQuestion = ({question}) => {
                     </>
                 }
                 <br/>
-                <button className="btn btn-success"
-                        onClick={() => {
-                            setGraded(true)
-                        }}>Grade</button>
+                {/*<button className="btn btn-success"*/}
+                {/*        onClick={() => {*/}
+                {/*            setGraded(true)*/}
+                {/*        }}>Grade</button>*/}
             </ul>
 
             <p>
-                Your answer: {yourAnswer}
+                Your answer: {question.answer}
             </p>
 
 

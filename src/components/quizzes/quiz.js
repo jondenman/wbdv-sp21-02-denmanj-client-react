@@ -6,6 +6,7 @@ import Question from "./questions/question";
 const Quiz = () => {
     const {quizId} = useParams()
     const [questions, setQuestions] = useState([])
+    const [score, setScore] = useState([])
     useEffect(() => {
         questionService.findQuestionsForQuiz(quizId).then((questions) => {
             setQuestions(questions)
@@ -25,6 +26,14 @@ const Quiz = () => {
                     })
                 }
             </ul>
+            <button className="btn btn-success"
+                    onClick={() => {
+                        questionService.submitQuiz(quizId, questions).then(response => {
+                            console.log(response.score)
+                            setScore(response.score)
+                        })
+                    }}>Submit</button>
+            <h4>Score: {score}</h4>
         </div>
     )
 }

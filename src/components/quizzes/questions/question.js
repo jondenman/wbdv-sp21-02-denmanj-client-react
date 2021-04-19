@@ -3,6 +3,7 @@ import TrueFalseQuestion from "./true-false-question";
 import MultipleChoiceQuestion from "./multiple-choice-question";
 
 const Question = ({question}) => {
+    // question.answer = ""
     return(
         <div>
             {

@@ -1,5 +1,6 @@
-const localhost = "localhost:4000"
-const QUIZZES_URL=`http://${localhost}/api/quizzes`;
+// const localhost = "localhost:4000"
+const localhost = "wbdv-sp21-denmanj-server-node.herokuapp.com"
+const QUIZZES_URL=`https://${localhost}/api/quizzes`;
 
 export const findAllQuizzes = () =>
     fetch(`${QUIZZES_URL}`).then(response => response.json())
